@@ -223,4 +223,13 @@ class RectUpRotLineView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity : Activity) : RectUpRotLineView {
+            val view : RectUpRotLineView = RectUpRotLineView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
