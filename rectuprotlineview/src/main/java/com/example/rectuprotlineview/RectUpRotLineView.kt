@@ -24,6 +24,7 @@ val colors : Array<Int> = arrayOf(
     Color.parseColor(it)
 }.toTypedArray()
 val rot : Float = 90f
+val backColor : Int = Color.parseColor("#BDBDBD")
 
 fun Int.inverse() : Float = 1f / this
 fun Float.maxScale(i : Int, n : Int) : Float = Math.max(0f, this - i * n.inverse())
@@ -195,6 +196,29 @@ class RectUpRotLineView(ctx : Context) : View(ctx) {
 
         fun startUpdating(cb : () -> Unit) {
             curr.startUpdating(cb)
+        }
+    }
+
+    data class Renderer(var view : RectUpRotLineView) {
+
+        private val rectUpRotLine = RectUpRotLine(0)
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            rectUpRotLine.draw(canvas, paint)
+            animator.animate {
+                rectUpRotLine.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            rectUpRotLine.startUpdating {
+                animator.start()
+            }
         }
     }
 }
