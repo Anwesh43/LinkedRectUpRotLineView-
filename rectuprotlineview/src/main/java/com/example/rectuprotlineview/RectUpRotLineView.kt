@@ -37,7 +37,7 @@ fun Canvas.drawRectUpRotLine(scale : Float, w : Float, h : Float, paint : Paint)
     save()
     translate(w / 2, h / 2)
     save()
-    rotate(rot * sf.divideScale(1, parts))
+    rotate(-rot * sf.divideScale(1, parts))
     drawLine(
         0f,
         -size,
