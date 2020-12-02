@@ -42,7 +42,7 @@ fun Canvas.drawRectUpRotLine(scale : Float, w : Float, h : Float, paint : Paint)
         0f,
         -size,
         0f,
-        -size + 2 * size * sf.divideScale(0, parts),
+        -size + size * sf.divideScale(0, parts),
         paint
     )
     restore()
@@ -51,7 +51,7 @@ fun Canvas.drawRectUpRotLine(scale : Float, w : Float, h : Float, paint : Paint)
             0f,
             -size,
             size * sf.divideScale(2, parts),
-            size
+            0f
         ),
         paint
     )
