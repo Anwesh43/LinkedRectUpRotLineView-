@@ -1,0 +1,3 @@
+include ':rectuprotlineview'
+include ':app'
+rootProject.name = "LinkedRectUpRotLineView"
